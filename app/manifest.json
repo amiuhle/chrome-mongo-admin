@@ -13,5 +13,5 @@
       "scripts": ["main.js"]
     }
   },
-  "permissions": ["identity","webview","experimental",{"socket":["tcp-connect"]}]
+  "permissions": ["webview","experimental",{"socket":["tcp-connect"]}]
 }
