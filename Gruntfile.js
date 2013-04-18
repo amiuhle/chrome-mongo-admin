@@ -4,13 +4,20 @@ module.exports = function( grunt ) {
   grunt.initConfig({
 
     browserify: {
-      all: {
+      app: {
         src: ['scripts/app.js'],
         dest: 'app/scripts/bundle.js'
       },
       test: {
         src: 'scripts/test.js',
         dest: 'app/scripts/bundle.js'
+        // ,
+        // options: {
+        //   globals: {
+        //     process: 'browser-resolve/builtin/process',
+        //     Buffer: 'buffer'
+        //   }
+        // }
       }
     }
 
