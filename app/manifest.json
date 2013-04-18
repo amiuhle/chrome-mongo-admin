@@ -13,5 +13,11 @@
       "scripts": ["main.js"]
     }
   },
-  "permissions": ["webview","experimental",{"socket":["tcp-connect"]}]
+  "permissions": [
+    "webview",
+    "experimental",
+    {
+      "socket":["tcp-connect"]
+    }
+  ]
 }
