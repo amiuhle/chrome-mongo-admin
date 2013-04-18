@@ -10,6 +10,6 @@
     "insert-module-globals": "git://github.com/amiuhle/insert-module-globals.git#globals",
 
     "grunt": "~0.4.0",
-    "grunt-browserify": ""
+    "grunt-browserify": "git://github.com/amiuhle/grunt-browserify.git#globals"
   }
 }
