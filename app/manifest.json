@@ -14,8 +14,6 @@
     }
   },
   "permissions": [
-    "webview",
-    "experimental",
     {
       "socket":["tcp-connect"]
     }
