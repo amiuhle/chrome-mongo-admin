@@ -6,7 +6,8 @@
     "mongodb": "git://github.com/amiuhle/mongodb-browserify.git#browserify",
     "browser-resolve": "git://github.com/amiuhle/node-browser-resolve.git",
     "net-browserify": "git://github.com/amiuhle/net-browserify.git",
-    "browserify": "git://github.com/amiuhle/node-browserify.git",
+    "browserify": "git://github.com/amiuhle/node-browserify.git#globals",
+    "insert-module-globals": "git://github.com/amiuhle/insert-module-globals.git#globals",
 
     "grunt": "~0.4.0",
     "grunt-browserify": ""
