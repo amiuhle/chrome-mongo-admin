@@ -1,3 +1,13 @@
+Buffer = Proxy(Buffer, {
+  get: function(target, name, receiver) {
+    console.log('get', target, name, receiver);
+  },
+  set: function(target, name, val, receiver) {
+    console.log('set', target, name, val, receiver);
+  }
+});
+
+
 var Db = require('mongodb').Db
   , Connection = require('mongodb').Connection
   , Server = require('mongodb').Server
@@ -5,6 +15,8 @@ var Db = require('mongodb').Db
 
 var host = '127.0.0.1';
 var port = Connection.DEFAULT_PORT;
+
+console.log('Buffer', Buffer);
 
 console.log('Connecting to ' + host + ':' + port);
 Db.connect(format('mongodb://%s:%s/node-mongo-examples?w=1', host, port), function(err, db) {
