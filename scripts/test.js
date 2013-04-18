@@ -1,5 +1,5 @@
 console.log(Buffer);
-console.log(require('buffer').Buffer);
+// console.log(require('buffer').Buffer);
 // require('vm');
 // console.log(require('vm'));
 console.log(process);

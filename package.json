@@ -8,6 +8,7 @@
     "net-browserify": "git://github.com/amiuhle/net-browserify.git",
     "browserify": "git://github.com/amiuhle/node-browserify.git#globals",
     "insert-module-globals": "git://github.com/amiuhle/insert-module-globals.git#globals",
+    "buffer-browserify": "git://github.com/amiuhle/buffer-browserify.git#harmony-proxy",
 
     "grunt": "~0.4.0",
     "grunt-browserify": "git://github.com/amiuhle/grunt-browserify.git#globals"
