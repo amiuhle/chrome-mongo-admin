@@ -125,7 +125,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%= yeoman.app %>/scripts',
                     src: '*.coffee',
-                    dest: '.tmp/scripts',
+                    dest: 'dev/scripts',
                     ext: '.js'
                 }]
             },
@@ -141,7 +141,7 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
+                cssDir: 'dev/styles',
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
@@ -243,8 +243,9 @@ module.exports = function (grunt) {
                     src: [
                         'manifest.json',
                         'main.js',
+                        'index.html',
                         '*.{ico,txt}',
-                        'images/{,*/}*.{webp,gif}'   
+                        'images/{,*/}*.{webp,gif,png}'   
                     ]
                 }]
             }
@@ -263,18 +264,8 @@ module.exports = function (grunt) {
         },
         browserify: {
           app: {
-            src: ['scripts/app.js'],
-            dest: 'app/scripts/bundle.js',
-            ignore: 'node_modules/browser-resolve/node_modules/buffer-browserify/index.js',
-            options: {
-              globals: {
-                process: 'browser-resolve/builtin/process',
-                Buffer: 'buffer-browserify'
-              }
-            }
-          },
-          test: {
-            src: 'scripts/test.js',
+            src: [], //['src/scripts/app.js'],
+            require: ['mongodb'],
             dest: 'app/scripts/bundle.js',
             ignore: 'node_modules/browser-resolve/node_modules/buffer-browserify/index.js',
             options: {
@@ -306,9 +297,10 @@ module.exports = function (grunt) {
         ]);
     });
 
-    grunt.registerTask('dev', [
+    grunt.registerTask('app', [
         'coffee:dist',
         'jst',
+        'compass:server',
         'copy:dev'
     ]);
 

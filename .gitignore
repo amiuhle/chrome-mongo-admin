@@ -7,4 +7,6 @@ dist
 dev
 
 app/components
+app/scripts/bundle.js
+
 test/bower_components
