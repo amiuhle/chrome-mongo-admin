@@ -1,3 +1,5 @@
-/node_modules/
-
-/app/scripts/
+node_modules
+temp
+dist
+.sass-cache
+app/components
