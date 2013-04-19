@@ -2,7 +2,7 @@
   "name": "mongo-browser",
   "version": "0.1.0",
   "devDependencies": {
-    "browser-resolve": "git://github.com/amiuhle/node-browser-resolve.git",
+    "browser-resolve": "git://github.com/amiuhle/node-browser-resolve.git#chrome-app-sockets",
     
     "browserify": "git://github.com/amiuhle/node-browserify.git#globals",
     "insert-module-globals": "git://github.com/amiuhle/insert-module-globals.git#globals",
@@ -11,9 +11,9 @@
     "bson": "git://github.com/amiuhle/bson-browserify.git#browserify",
     "mongodb": "git://github.com/amiuhle/mongodb-browserify.git#browserify",
     
-    "net-browserify": "git://github.com/amiuhle/net-browserify.git#chrome-app-sockets",
+    "net-chromeify": "git://github.com/amiuhle/net-chromeify.git",
     "dns-chromeify": "git://github.com/amiuhle/dns-chromeify.git",
-    "cp_wrap-chromeify": "git://github.com/amiuhle/tcp_wrap-chromeify",
+    "tcp_wrap-chromeify": "git://github.com/amiuhle/tcp_wrap-chromeify",
 
     "grunt": "~0.4.0",
     "grunt-browserify": "git://github.com/amiuhle/grunt-browserify.git#globals"
