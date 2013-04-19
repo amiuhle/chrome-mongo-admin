@@ -37,7 +37,7 @@
     "grunt-open": "~0.2.0",
     "matchdep": "~0.1.1",
 
-    "grunt-browserify": "git://github.com/amiuhle/grunt-browserify.git#globals"
+    "grunt-browserify": "git://github.com/amiuhle/grunt-browserify.git"
   },
   "engines": {
     "node": ">=0.8.0"

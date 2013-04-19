@@ -1,0 +1,1 @@
+require('process').registerBinding('tcp_wrap', require('tcp_wrap-chromeify'));

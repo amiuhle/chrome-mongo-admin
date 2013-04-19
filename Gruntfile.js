@@ -265,7 +265,7 @@ module.exports = function (grunt) {
         browserify: {
           app: {
             src: [], //['src/scripts/app.js'],
-            require: ['mongodb'],
+            require: ['mongodb', 'tcp_wrap-chromeify'],
             dest: 'app/scripts/bundle.js',
             ignore: 'node_modules/browser-resolve/node_modules/buffer-browserify/index.js',
             options: {
