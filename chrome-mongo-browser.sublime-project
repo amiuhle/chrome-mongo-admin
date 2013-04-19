@@ -3,7 +3,7 @@
 	[
 		{
 			"path": "/home/timo/Code/yo/chrome-mongo-browser",
-      "folder_exclude_patterns": [".sass-cache", ".tmp"]
+      "folder_exclude_patterns": [".sass-cache"]
 		}
 	]
 }

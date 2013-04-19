@@ -4,9 +4,9 @@ temp
 dist
 .sass-cache
 .tmp
-dev
 
 app/components
-app/scripts/bundle.js
+app/scripts
+app/styles
 
 test/bower_components

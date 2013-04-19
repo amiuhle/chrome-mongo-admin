@@ -18,14 +18,14 @@ module.exports = function (grunt) {
     var yeomanConfig = {
         app: 'app',
         dist: 'dist',
-        dev: 'dev'
+        src: 'src'
     };
 
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
             coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+                files: ['<%= yeoman.src %>/scripts/{,*/}*.coffee'],
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
@@ -33,21 +33,21 @@ module.exports = function (grunt) {
                 tasks: ['coffee:test']
             },
             compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                files: ['<%= yeoman.src %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass']
             },
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
-                    '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
-                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+                    '<%= yeoman.app %>/styles/{,*/}*.css',
+                    '<%= yeoman.app %>/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ],
                 tasks: ['livereload']
             },
             jst: {
                 files: [
-                    '<%= yeoman.app %>/scripts/templates/*.ejs'
+                    '<%= yeoman.src %>/scripts/templates/*.ejs'
                 ],
                 tasks: ['jst']
             }
@@ -63,7 +63,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             lrSnippet,
-                            mountFolder(connect, '.tmp'),
+                            // mountFolder(connect, '.tmp'),
                             mountFolder(connect, 'app')
                         ];
                     }
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
                 options: {
                     middleware: function (connect) {
                         return [
-                            mountFolder(connect, '.tmp'),
+                            // mountFolder(connect, '.tmp'),
                             mountFolder(connect, 'test')
                         ];
                     }
@@ -104,8 +104,8 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= yeoman.app %>/scripts/{,*/}*.js',
-                '!<%= yeoman.app %>/scripts/vendor/*',
+                '<%= yeoman.src %>/scripts/{,*/}*.js',
+                '!<%= yeoman.src %>/scripts/vendor/*',
                 'test/spec/{,*/}*.js'
             ]
         },
@@ -123,25 +123,25 @@ module.exports = function (grunt) {
                     // rather than compiling multiple files here you should
                     // require them into your main .coffee file
                     expand: true,
-                    cwd: '<%= yeoman.app %>/scripts',
+                    cwd: '<%= yeoman.src %>/scripts',
                     src: '*.coffee',
-                    dest: 'dev/scripts',
+                    dest: 'app/scripts',
                     ext: '.js'
                 }]
             },
             test: {
                 files: [{
                     expand: true,
-                    cwd: '.tmp/spec',
+                    cwd: 'test/spec',
                     src: '*.coffee',
-                    dest: 'test/spec'
+                    dest: '.tmp/spec'
                 }]
             }
         },
         compass: {
             options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: 'dev/styles',
+                sassDir: '<%= yeoman.src %>/styles',
+                cssDir: 'app/styles',
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
@@ -233,21 +233,6 @@ module.exports = function (grunt) {
                         'images/{,*/}*.{webp,gif}'
                     ]
                 }]
-            },
-            dev: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dev %>',
-                    src: [
-                        'manifest.json',
-                        'main.js',
-                        'index.html',
-                        '*.{ico,txt}',
-                        'images/{,*/}*.{webp,gif,png}'   
-                    ]
-                }]
             }
         },
         bower: {
@@ -258,7 +243,7 @@ module.exports = function (grunt) {
         jst: {
             compile: {
                 files: {
-                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
+                    'app/scripts/templates.js': ['<%= yeoman.src %>/templates/*.ejs']
                 }
             }
         },
@@ -280,28 +265,19 @@ module.exports = function (grunt) {
 
     grunt.renameTask('regarde', 'watch');
 
-    grunt.registerTask('server', function (target) {
-        if (target === 'dist') {
-            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
-        }
-
-        grunt.task.run([
-            'clean:server',
-            'coffee:dist',
-            'jst',
-            'compass:server',
-            'livereload-start',
-            'connect:livereload',
-            'open',
-            'watch'
-        ]);
-    });
-
     grunt.registerTask('app', [
         'coffee:dist',
         'jst',
-        'compass:server',
-        'copy:dev'
+        'compass:server'
+    ]);
+
+    grunt.registerTask('server', [
+        'clean:server',
+        'app',
+        'livereload-start',
+        'connect:livereload',
+        'open',
+        'watch'
     ]);
 
     grunt.registerTask('test', [
