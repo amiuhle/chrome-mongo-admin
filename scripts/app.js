@@ -1,15 +1,24 @@
+process.registerBinding('tcp_wrap', require('tcp_wrap-chromeify'));
+
 window.onload = function() {
-  var Db = require('mongodb').Db
-    , Connection = require('mongodb').Connection
-    , Server = require('mongodb').Server
-    , format = require('util').format;
+  var Db = require('mongodb').Db, 
+    Connection = require('mongodb').Connection,
+    Server = require('mongodb').Server,
+    format = require('util').format;
 
   var host = '127.0.0.1';
   var port = Connection.DEFAULT_PORT;
+  var options = {
+    server: {
+      socketOptions: {
+        noDelay: true,
+        keepAlive: 1000
+      }
+    }
+  };
 
   console.log('Connecting to ' + host + ':' + port);
-  Db.connect(format('mongodb://%s:%s/node-mongo-examples?w=1', host, port), function(err, db) {
-    console.log('callback', err, db);
+  Db.connect(format('mongodb://%s:%s/node-mongo-examples?w=1', host, port), options, function(err, db) {
     db.dropDatabase(function(err, result) {
       db.collection('test', function(err, collection) {
         // Erase all records from the collection, if any
