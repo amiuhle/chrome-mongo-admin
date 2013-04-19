@@ -2,10 +2,39 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>MongoDB Browser</title>
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
+    <div class="navbar">
+      <nav class="navbar-inner">
+        <a href="#" class="brand span2">MongoDB</a>
+        <form class="navbar-search">
+          <div class="input-prepend input-append">
+            <span class="add-on">mongodb://</span>
+            <input type="text" placeholder="host">
+          </div>
+        </form>
+        <ul class="nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">localhost/test</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div>
+      <div>
+        <div class="span2">sidebar</div>
+        <div class="">content</div>
+      </div>
+    </div>
     <script src="scripts/bundle.js"></script>
     <!-- build:js scripts/vendor.js -->
     <script src="components/jquery/jquery.min.js"></script>
