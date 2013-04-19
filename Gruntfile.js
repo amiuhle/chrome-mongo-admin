@@ -304,9 +304,14 @@ module.exports = function (grunt) {
         'usemin'
     ]);
 
-    grunt.registerTask('default', [
+    grunt.registerTask('dist', [
         'jshint',
         'test',
         'build'
     ]);
+
+    grunt.registerTask('default', [
+        'browserify',
+        'app'
+    ])
 };
