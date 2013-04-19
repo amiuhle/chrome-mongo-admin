@@ -17,7 +17,8 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         app: 'app',
-        dist: 'dist'
+        dist: 'dist',
+        dev: 'dev'
     };
 
     grunt.initConfig({
@@ -226,9 +227,24 @@ module.exports = function (grunt) {
                     cwd: '<%= yeoman.app %>',
                     dest: '<%= yeoman.dist %>',
                     src: [
+                        'manifest.json',
+                        'main.js',
                         '*.{ico,txt}',
-                        '.htaccess',
                         'images/{,*/}*.{webp,gif}'
+                    ]
+                }]
+            },
+            dev: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dev %>',
+                    src: [
+                        'manifest.json',
+                        'main.js',
+                        '*.{ico,txt}',
+                        'images/{,*/}*.{webp,gif}'   
                     ]
                 }]
             }
@@ -290,6 +306,12 @@ module.exports = function (grunt) {
         ]);
     });
 
+    grunt.registerTask('dev', [
+        'coffee:dist',
+        'jst',
+        'copy:dev'
+    ]);
+
     grunt.registerTask('test', [
         'clean:server',
         'coffee',
@@ -310,7 +332,7 @@ module.exports = function (grunt) {
         'concat',
         'cssmin',
         'uglify',
-        'copy',
+        'copy:dist',
         'usemin'
     ]);
 
