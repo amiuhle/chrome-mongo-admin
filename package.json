@@ -35,7 +35,7 @@
     "grunt-usemin": "~0.1.9",
     "grunt-regarde": "~0.1.1",
     "grunt-open": "~0.2.0",
-    "matchdep": "~0.1.1"
+    "matchdep": "~0.1.1",
 
     "grunt-browserify": "git://github.com/amiuhle/grunt-browserify.git#globals"
   },
