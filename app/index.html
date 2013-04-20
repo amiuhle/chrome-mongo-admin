@@ -9,10 +9,19 @@
     <div class="navbar">
       <nav class="navbar-inner">
         <a href="#" class="brand span2">MongoDB</a>
-        <form class="navbar-search">
+        <form id="connect" class="navbar-form pull-left" method="get">
           <div class="input-prepend input-append">
             <span class="add-on">mongodb://</span>
-            <input type="text" placeholder="host">
+            <input name="host" class="" type="text" placeholder="host">
+            <span class="add-on">:</span>
+            <span></span>
+          </div><div class="input-prepend input-append">
+            <input name="port" class="span2" type="text" placeholder="port">
+            <span class="add-on">/</span>
+            <span></span>
+          </div><div class="input-prepend input-append">
+            <input name="database" class="span2" type="text" placeholder="database">
+            <button class="btn" type="submit"><i class="icon-chevron-right"></i></button>
           </div>
         </form>
         <ul class="nav">
@@ -29,10 +38,10 @@
         </ul>
       </nav>
     </div>
-    <div>
-      <div>
-        <div class="span2">sidebar</div>
-        <div class="">content</div>
+    <div class="container">
+      <div class="row">
+        <div class="span3">sidebar</div>
+        <div class="span9">content</div>
       </div>
     </div>
     <script src="scripts/bundle.js"></script>
