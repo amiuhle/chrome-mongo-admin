@@ -12,15 +12,15 @@
         <form id="connect" class="navbar-form pull-left" method="get">
           <div class="input-prepend input-append">
             <span class="add-on">mongodb://</span>
-            <input name="host" class="" type="text" placeholder="host">
+            <input name="host" class="input-medium" type="text" placeholder="host" value="localhost">
             <span class="add-on">:</span>
             <span></span>
           </div><div class="input-prepend input-append">
-            <input name="port" class="span2" type="text" placeholder="port">
+            <input name="port" class="input-mini" type="text" placeholder="27017">
             <span class="add-on">/</span>
             <span></span>
           </div><div class="input-prepend input-append">
-            <input name="database" class="span2" type="text" placeholder="database">
+            <input name="database" type="text" class="input-large" placeholder="database" value="yardage_book_development">
             <button class="btn" type="submit"><i class="icon-chevron-right"></i></button>
           </div>
         </form>
@@ -40,7 +40,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="span3">sidebar</div>
+        <div id="sidebar" class="span3">sidebar</div>
         <div class="span9">content</div>
       </div>
     </div>
