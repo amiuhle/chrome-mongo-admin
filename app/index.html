@@ -2,25 +2,17 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>MongoDB Browser</title>
+    <title>Chrome MongoDB Browser</title>
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <div class="navbar">
+    <header class="navbar">
       <nav class="navbar-inner">
         <a href="#" class="brand span2">MongoDB</a>
         <form id="connect" class="navbar-form pull-left" method="get">
           <div class="input-prepend input-append">
             <span class="add-on">mongodb://</span>
-            <input name="host" class="input-medium" type="text" placeholder="host" value="localhost">
-            <span class="add-on">:</span>
-            <span></span>
-          </div><div class="input-prepend input-append">
-            <input name="port" class="input-mini" type="text" placeholder="27017">
-            <span class="add-on">/</span>
-            <span></span>
-          </div><div class="input-prepend input-append">
-            <input name="database" type="text" class="input-large" placeholder="database" value="yardage_book_development">
+            <input name="url" class="input-xxlarge" type="text" placeholder="[username:password@]host[:port][/[database][?options]]">
             <button class="btn" type="submit"><i class="icon-chevron-right"></i></button>
           </div>
         </form>
@@ -33,11 +25,15 @@
               <li>
                 <a href="#">localhost/test</a>
               </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#"></a>
+              </li>
             </ul>
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
     <div class="container">
       <div class="row">
         <div id="sidebar" class="span3">sidebar</div>
