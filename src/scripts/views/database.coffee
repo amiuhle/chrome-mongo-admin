@@ -35,6 +35,7 @@ class CollectionList extends Backbone.View
 
 class Document extends Backbone.View
   tagName: 'li'
+  className: 'mongo-document mongo-object'
   template: JST['src/templates/document.hbs']
 
   constructor: (@document) ->
@@ -51,8 +52,8 @@ class Document extends Backbone.View
 
   render: ->
     el = @$el.empty()
-    el.append("<li>#{@document._id}</li>")
-    ul = $('<ul class="">')
+    el.append("<li class='mongo-id'>#{@document._id}</li>")
+    ul = $('<ul class="mongo-properties">')
     el.append(ul)
     @collection.each (model) =>
       ul.append(@template(model.attributes))
@@ -64,7 +65,7 @@ class CollectionDetails extends Backbone.View
   render: (err, collection) =>
     throw err if err
     el = @$el.empty()
-    ul = $('<ul class="nav-list">')
+    ul = $('<ul class="mongo-collection">')
     el.append(ul)
     collection?.find().each (err, item) ->
       console.dir(item) if item
