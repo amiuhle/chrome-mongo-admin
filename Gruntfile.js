@@ -109,13 +109,28 @@ module.exports = function (grunt) {
                 'test/spec/{,*/}*.js'
             ]
         },
-        mocha: {
-            all: {
+        jasmine: {
+            test: {
+                src: [
+                  '<%= yeoman.app %>/scripts/{,*/}*.js',
+                  '!<%= yeoman.app %>/scripts/vendor/*'
+                ],
                 options: {
-                    run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                    vendor: [
+                        'test/shims.js',
+                        '<%= yeoman.app %>/scripts/vendor/*.js',
+                        '<%= yeoman.app %>/components/jquery/jquery.js',
+                        '<%= yeoman.app %>/components/underscore/underscore.js',
+                        '<%= yeoman.app %>/components/backbone/backbone.js',
+                        '<%= yeoman.app %>/components/indexeddb-backbonejs-adapter/backbone-indexeddb.js',
+                        '<%= yeoman.app %>/components/handlebars/handlebars.runtime.js'
+                    ],
+                    specs: ['{test,.tmp}/{spec,fixtures}/{,*/}*.js']
                 }
-            }
+            },
+            chrome: {
+
+            },
         },
         coffee: {
             dist: {
@@ -133,8 +148,9 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'test/spec',
-                    src: '*.coffee',
-                    dest: '.tmp/spec'
+                    src: '{,models/,views/,controllers/,routes/}*.coffee',
+                    dest: '.tmp/spec',
+                    ext: '.js'
                 }]
             }
         },
@@ -255,7 +271,7 @@ module.exports = function (grunt) {
           app: {
             src: [], //['src/scripts/app.js'],
             require: ['mongodb', 'tcp_wrap-chromeify'],
-            dest: 'app/scripts/bundle.js',
+            dest: 'app/scripts/vendor/bundle.js',
             ignore: 'node_modules/browser-resolve/node_modules/buffer-browserify/index.js',
             options: {
               globals: {
@@ -288,9 +304,10 @@ module.exports = function (grunt) {
         'clean:server',
         'coffee',
         'handlebars',
-        'compass',
-        'connect:test',
-        'mocha'
+        // 'compass',
+        'jasmine:test',
+        // 'watch'
+        // 'jasmine:chrome:build'
     ]);
 
     grunt.registerTask('build', [

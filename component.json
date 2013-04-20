@@ -6,7 +6,8 @@
     "jquery": "~2.0.0",
     "underscore": "~1.4.4",
     "backbone": "~1.0.0",
-    "handlebars": "~1.0.0"
+    "handlebars": "~1.0.0",
+    "indexeddb-backbonejs-adapter": ""
   },
   "devDependencies": {}
 }
