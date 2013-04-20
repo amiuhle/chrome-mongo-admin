@@ -29,6 +29,12 @@ _.extend(window.mb, Backbone.Events);
 class mb.App
   constructor: (@$el) ->
     @header = new mb.Views.Header el: @$el.find('header')
+    @database = new mb.Views.Database el: @$el.find('#container')
+
+$ ->
+  console.log 'booting...'
+  app = new mb.App($('#app'));
+
     # $header = $('header')
     # @header = new yb.Views.Header(el: $header)
     # @header.render()

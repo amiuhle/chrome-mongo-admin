@@ -23,7 +23,6 @@ class ConnectionList extends Backbone.View
 
   render: =>
     el = @$el.empty()
-    console.log 'render list', arguments
     @collection.sort().each (item) ->
       view = new ConnectionItem model: item
       el.append view.render().el

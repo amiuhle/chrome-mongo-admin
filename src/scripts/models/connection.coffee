@@ -10,5 +10,6 @@ class mb.Models.Connection extends Backbone.Model
 
   save: ->
     @updatedAt(new Date())
-    console.log this
     super
+
+  mongoUrl: -> "mongodb://#{@url()}?w=0"
