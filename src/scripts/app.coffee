@@ -5,9 +5,26 @@ window.mb =
   Models: {}
   Collections: {}
   Views: {}
+  database:
+    id: 'chrome-mongo-browser'
+    migrations: [
+      {
+        version: 1
+        migrate: (transaction, next) ->
+          store = transaction.db.createObjectStore('connections')
+          next()
+      },
+      {
+        version: 2
+        migrate: (transaction, next) ->
+          store = transaction.objectStore 'connections'
+          store.createIndex('urlIndex', 'url', { unique: true });
+          next()
+      }
+    ]
   
   root: '/'
-# _.extend(window.mb, Backbone.Events);
+_.extend(window.mb, Backbone.Events);
 
 class mb.App
   constructor: (@$el) ->
@@ -23,8 +40,8 @@ class mb.App
     #     event.preventDefault()
     #   yb.navigate href
     
-    if !Backbone.History.started
-      Backbone.history.start pushState: true, root: mb.root
+    # if !Backbone.History.started
+    #   Backbone.history.start pushState: true, root: mb.root
 
 
 # $('#connect').submit ->

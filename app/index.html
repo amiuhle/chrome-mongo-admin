@@ -16,11 +16,11 @@
         </div>
       </div>
     </div>
-    <script src="scripts/bundle.js"></script>
+    <script src="scripts/vendor/bundle.js"></script>
     <!-- build:js scripts/vendor.js -->
-    <script src="components/jquery/jquery.min.js"></script>
-    <script src="components/underscore/underscore-min.js"></script>
-    <script src="components/backbone/backbone-min.js"></script>
+    <script src="components/jquery/jquery.js"></script>
+    <script src="components/underscore/underscore.js"></script>
+    <script src="components/backbone/backbone.js"></script>
     <script src="components/indexeddb-backbonejs-adapter/backbone-indexeddb.js"></script>
     <script src="components/handlebars/handlebars.runtime.js"></script>
     <!-- endbuild -->
@@ -44,6 +44,12 @@
     <!-- build:js scripts/app.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/templates.js"></script>
+
+    <script src="scripts/mixins/index.js"></script>
+    <script src="scripts/mixins/accessible.js"></script>
+    <script src="scripts/mixins/delegating.js"></script>
+    <script src="scripts/models/connection.js"></script>
+    <script src="scripts/collections/connections.js"></script>
     <script src="scripts/views/header.js"></script>
     <!-- endbuild -->
     <script>

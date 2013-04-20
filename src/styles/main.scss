@@ -3,6 +3,10 @@ $iconWhiteSpritePath:     "../images/glyphicons-halflings-white.png";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
+a {
+  cursor: pointer;
+}
+
 .no-wrap {
   white-space: nowrap;
 }

@@ -25,7 +25,7 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         watch: {
             coffee: {
-                files: ['<%= yeoman.src %>/scripts/{,models/,views/,controllers/,routes/}*.coffee'],
+                files: ['<%= yeoman.src %>/scripts/{,*/}*.coffee'],
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
@@ -139,7 +139,7 @@ module.exports = function (grunt) {
                     // require them into your main .coffee file
                     expand: true,
                     cwd: '<%= yeoman.src %>/scripts',
-                    src: '{,models/,views/,controllers/,routes/}*.coffee',
+                    src: '{,*/}*.coffee',
                     dest: 'app/scripts',
                     ext: '.js'
                 }]
@@ -148,7 +148,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'test/spec',
-                    src: '{,models/,views/,controllers/,routes/}*.coffee',
+                    src: '{,*/}*.coffee',
                     dest: '.tmp/spec',
                     ext: '.js'
                 }]

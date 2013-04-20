@@ -3,7 +3,7 @@
   <form id="connect" class="navbar-form pull-left" method="get">
     <div class="input-prepend input-append">
       <span class="add-on">mongodb://</span>
-      <input name="url" class="input-xxlarge" type="text" placeholder="[username:password@]host[:port][/[database][?options]]">
+      <input type="text" id="url" class="input-xxlarge" placeholder="[username:password@]host[:port][/[database][?options]]">
       <button class="btn"><i class="icon-chevron-right"></i></button>
     </div>
   </form>
@@ -12,14 +12,8 @@
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <b class="caret"></b>
       </a>
-      <ul class="dropdown-menu pull-right">
-        <li>
-          <a href="#">localhost/test</a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a href="#"></a>
-        </li>
+      <ul id="recent-connections" class="dropdown-menu pull-right">
+        <li><a><em>No Recent connections</em></a></li>
       </ul>
     </li>
   </ul>
