@@ -25,7 +25,7 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         watch: {
             coffee: {
-                files: ['<%= yeoman.src %>/scripts/{,*/}*.coffee'],
+                files: ['<%= yeoman.src %>/scripts/{,models/,views/,controllers/,routes/}*.coffee'],
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
@@ -45,11 +45,11 @@ module.exports = function (grunt) {
                 ],
                 tasks: ['livereload']
             },
-            jst: {
+            handlebars: {
                 files: [
-                    '<%= yeoman.src %>/scripts/templates/*.ejs'
+                    '<%= yeoman.src %>/templates/*.hbs'
                 ],
-                tasks: ['jst']
+                tasks: ['handlebars']
             }
         },
         connect: {
@@ -124,7 +124,7 @@ module.exports = function (grunt) {
                     // require them into your main .coffee file
                     expand: true,
                     cwd: '<%= yeoman.src %>/scripts',
-                    src: '*.coffee',
+                    src: '{,models/,views/,controllers/,routes/}*.coffee',
                     dest: 'app/scripts',
                     ext: '.js'
                 }]
@@ -240,10 +240,14 @@ module.exports = function (grunt) {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
         },
-        jst: {
+        handlebars: {
             compile: {
+                options: {
+                    namespace: "JST"
+                },
                 files: {
-                    'app/scripts/templates.js': ['<%= yeoman.src %>/templates/*.ejs']
+                    '<%= yeoman.app %>/scripts/templates.js': '<%= yeoman.src %>/templates/*.hbs'
+                    // "path/to/another.js": ["path/to/sources/*.hbs", "path/to/more/*.hbs"]
                 }
             }
         },
@@ -267,7 +271,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('app', [
         'coffee:dist',
-        'jst',
+        'handlebars',
         'compass:server'
     ]);
 
@@ -283,7 +287,7 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [
         'clean:server',
         'coffee',
-        'jst',
+        'handlebars',
         'compass',
         'connect:test',
         'mocha'
@@ -292,7 +296,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'coffee',
-        'jst',
+        'handlebars',
         'compass:dist',
         'useminPrepare',
         'imagemin',

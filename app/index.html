@@ -6,38 +6,14 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <header class="navbar">
-      <nav class="navbar-inner">
-        <a href="#" class="brand span2">MongoDB</a>
-        <form id="connect" class="navbar-form pull-left" method="get">
-          <div class="input-prepend input-append">
-            <span class="add-on">mongodb://</span>
-            <input name="url" class="input-xxlarge" type="text" placeholder="[username:password@]host[:port][/[database][?options]]">
-            <button class="btn" type="submit"><i class="icon-chevron-right"></i></button>
-          </div>
-        </form>
-        <ul class="nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="#">localhost/test</a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#"></a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div class="container">
-      <div class="row">
-        <div id="sidebar" class="span3">sidebar</div>
-        <div class="span9">content</div>
+    <div id="app">
+      <header class="navbar">
+      </header>
+      <div id="container" class="container">
+        <div class="row">
+          <div id="sidebar" class="span3">sidebar</div>
+          <div class="span9">content</div>
+        </div>
       </div>
     </div>
     <script src="scripts/bundle.js"></script>
@@ -61,11 +37,16 @@
     <script src="components/sass-bootstrap/js/bootstrap-scrollspy.js"></script>
     <script src="components/sass-bootstrap/js/bootstrap-collapse.js"></script>
     <script src="components/sass-bootstrap/js/bootstrap-tab.js"></script>
+    <script src="components/handlebars/handlebars.runtime.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
+    <!-- build:js scripts/app.js -->
+    <script src="scripts/app.js"></script>
     <script src="scripts/templates.js"></script>
+    <script src="scripts/views/header.js"></script>
     <!-- endbuild -->
+    <script>
+      var app = new mb.App($('#app'));
+    </script>
   </body>
 </html>
