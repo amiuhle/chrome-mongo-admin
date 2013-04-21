@@ -47,10 +47,7 @@ class ConnectionItem extends Backbone.View
       header: "Delete Connection"
       body: "Delete saved Connection <code>mongodb://#{@url()}</code>?"
     .ready.then =>
-      console.log('yes')
       @model.destroy()
-    .fail =>
-      console.log('no')
     false
 
 class ConnectionList extends Backbone.View
@@ -64,7 +61,6 @@ class ConnectionList extends Backbone.View
     ['sync', 'remove', 'add'].forEach (e) => @listenTo @collection, e, rate_limit
 
   render: =>
-    console.log 'render', arguments
     el = @$el.empty()
     @collection.sort().each (item) ->
       view = new ConnectionItem model: item

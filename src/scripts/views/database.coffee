@@ -2,9 +2,16 @@ mongodb = require('mongodb')
 Db = mongodb.Db
 
 class CollectionItem extends Backbone.View
+  @mixin mb.Mixins.Delegating
+  @delegate 'collection_name', 'count'
+
   tagName: 'li'
+  className: 'collection-list-item'
   template: JST['src/templates/collection_list_item.hbs']
   events: 'click a': 'collection'
+
+  initialize: ->
+    @listenTo @model, 'all', @render
 
   render: ->
     @$el.html @template(this)
@@ -18,13 +25,23 @@ class CollectionItem extends Backbone.View
     @$el.siblings().toggleClass 'active', false
     mb.trigger 'collection', @model
 
+class MongoCollection extends Backbone.Model
+  @mixin mb.Mixins.Accessible
+  @accessor 'collection_name', 'count'
+
+  constructor: (collection) ->
+    super
+    @collectionName collection.collectionName
+    @count(false)
+    collection.count (err, result) => @count(result) unless err
+
 class CollectionList extends Backbone.View
   tagName: 'ul'
   className: 'nav nav-list'
 
   initialize: ->
     @collection ?= new Backbone.Collection
-    @listenTo @collection, 'all', @render
+    @listenTo @collection, 'change', _.debounce @render, 100
 
   render: =>
     el = @$el.empty()
@@ -32,6 +49,12 @@ class CollectionList extends Backbone.View
       view = new CollectionItem model: item
       el.append view.render().el
     this
+
+  setCollections: (items) ->
+    @collection.reset()
+    items.forEach (item) =>
+      @collection.add new MongoCollection item
+
 
 class MongoObject extends Backbone.Model
   @mixin mb.Mixins.Accessible
@@ -59,7 +82,6 @@ class Document extends Backbone.View
       value: value
 
   render: ->
-    console.log @document
     el = @$el.empty()
     ul = $('<ul class="mongo-properties">')
     el.append(ul)
@@ -105,15 +127,14 @@ class mb.Views.Database extends Backbone.View
 
   onConnect: (err, @db) =>
     throw err if err
-    console.log 'success', @db
+    # console.log 'success', @db
     @render()
     db.collections (err, items) =>
-      console.log items
-      @collectionList.collection.reset items
+      @collectionList.setCollections items
 
   collection: (collection) =>
     collectionName = collection.get('collectionName')
-    console.log 'collection', collectionName
+    # console.log 'collection', collectionName
     @db.collection collectionName, @collectionDetails.render
 
 

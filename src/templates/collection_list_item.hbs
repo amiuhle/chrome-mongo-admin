@@ -1,1 +1,6 @@
-<a href="#">{{collectionName}}</a>
+<a href="#">
+  {{#if count}}
+    <span class="count badge badge-info">{{count}}</span>
+  {{/if}}
+  {{collectionName}}
+</a>
