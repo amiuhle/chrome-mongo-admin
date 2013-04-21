@@ -1,0 +1,75 @@
+ul.mongo-collection {
+  font-family: monospace;
+  &, & ul {
+    list-style-type: none;
+    margin-left: 1em;
+    li {
+      margin-left: 1em;
+      margin-right: 0;
+    }
+  }
+}
+
+.mongo-collection, .mongo-array {
+  &:before {
+    content: '[';
+  }
+  &:after {
+    content: ']';
+  }
+}
+
+.mongo-object {
+  &:before {
+    content: '{';
+  }
+
+  &:after {
+    content: '}';
+  }
+}
+
+.mongo-properties {
+  .mongo-property {
+
+    &:hover {
+      backbround-color: #ccc;
+    }
+
+    &:before {
+      display: inline-block;
+      content: '';
+      width: 1em;
+    }
+
+    &.expandable:before {
+      content: '+';
+      cursor: pointer;
+    }
+
+    .name {
+      color: rgb(136, 19, 145);
+      &:after {
+        color: black;
+        content: ':';
+      }
+    }
+    &:not(:last-child):after {
+      display: inline;
+      content: ',';
+    }
+
+    .value {
+      &.mongo-string {
+        color: rgb(196, 26, 22);
+        &:before, &:after {
+          content: "\"";
+        }
+      }
+
+      &.mongo-number {
+        color: rgb(28, 0, 207);
+      }
+    }
+  }
+}

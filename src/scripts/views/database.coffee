@@ -33,6 +33,15 @@ class CollectionList extends Backbone.View
       el.append view.render().el
     this
 
+class MongoObject extends Backbone.Model
+  @mixin mb.Mixins.Accessible
+  @accessor 'name', 'value'
+
+  class: -> if Object::toString.apply(@value()) == '[object Array]' then 'array' else typeof @value()
+  type: -> @value().constructor.name
+  
+  isObject: -> @class() == 'object'
+
 class Document extends Backbone.View
   tagName: 'li'
   className: 'mongo-document mongo-object'
@@ -45,18 +54,17 @@ class Document extends Backbone.View
 
   modelify: (property) ->
     value = @document[property]
-    new Backbone.Model
+    new MongoObject
       name: property
       value: value
-      type: typeof value
 
   render: ->
+    console.log @document
     el = @$el.empty()
-    el.append("<li class='mongo-id'>#{@document._id}</li>")
     ul = $('<ul class="mongo-properties">')
     el.append(ul)
     @collection.each (model) =>
-      ul.append(@template(model.attributes))
+      ul.append(@template(model))
     this
 
 
@@ -69,8 +77,9 @@ class CollectionDetails extends Backbone.View
     el.append(ul)
     collection?.find().each (err, item) ->
       console.dir(item) if item
-      view = new Document item
-      ul.append(view.render().el)
+      if item?
+        view = new Document item
+        ul.append(view.render().el)
     this
 
 
