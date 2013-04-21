@@ -99,7 +99,8 @@ class mb.Views.Database extends Backbone.View
     @$el.find('#collection-details').html(@collectionDetails.render().el)
 
   connect: (url) =>
-    console.log 'connect', url.mongoUrl()
+    if typeof url == 'string'
+      url = new mb.Models.Connection url: url
     Db.connect url.mongoUrl(), @onConnect
 
   onConnect: (err, @db) =>
