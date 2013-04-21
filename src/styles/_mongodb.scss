@@ -33,7 +33,7 @@ ul.mongo-collection {
   .mongo-property {
 
     &:hover {
-      backbround-color: #ccc;
+      background-color: #eee;
     }
 
     &:before {
@@ -42,9 +42,11 @@ ul.mongo-collection {
       width: 1em;
     }
 
-    &.expandable:before {
-      content: '+';
+    &.expandable {
       cursor: pointer;
+      &:before {
+        content: '+';
+      }
     }
 
     .name {
