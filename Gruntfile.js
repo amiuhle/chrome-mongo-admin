@@ -268,7 +268,7 @@ module.exports = function (grunt) {
       }
     },
     browserify: {
-      app: {
+      bundle: {
         src: [], //['src/scripts/app.js'],
         require: ['mongodb', 'tcp_wrap-chromeify'],
         dest: 'app/scripts/vendor/bundle.js',
@@ -284,6 +284,10 @@ module.exports = function (grunt) {
   });
 
   grunt.renameTask('regarde', 'watch');
+
+  grunt.registerTask('init', [
+    'browserify:bundle'
+  ]);
 
   grunt.registerTask('app', [
     'coffee:dist',
@@ -326,13 +330,14 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('dist', [
+    'browserify:bundle',
     'jshint',
     // 'test',
     'build'
   ]);
 
-  grunt.registerTask('default', [
-    'browserify',
-    'app'
-  ]);
+  // grunt.registerTask('default', [
+  //   'browserify:bundle',
+  //   'app'
+  // ]);
 };
