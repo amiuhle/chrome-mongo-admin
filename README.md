@@ -13,7 +13,7 @@ To build the code, you need to install grunt and bower:
 After cloning, install the required dependencies with
 
 ```
-    npm install && bower install
+    npm install & bower install
 ```
 
 Then you have to run `grunt init` once to build the required libraries into `app/scripts/vendor/bundle.js`.
