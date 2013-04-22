@@ -6,7 +6,7 @@ window.mb =
   Collections: {}
   Views: {}
   database:
-    id: 'chrome-mongo-browser'
+    id: 'chrome-mongo-admin'
     migrations: [
       {
         version: 1

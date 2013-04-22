@@ -1,4 +1,4 @@
-chrome-mongo-browser
+chrome-mongo-admin
 ====================
 
-Inspect your MongoDBs from Chrome!
+Manage your MongoDBs from Chrome!

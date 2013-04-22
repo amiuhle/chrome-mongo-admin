@@ -1,5 +1,5 @@
 {
-  "name": "chrome-mongo-browser",
+  "name": "chrome-mongo-admin",
   "version": "0.0.0",
   "dependencies": {
     "sass-bootstrap": "~2.3.1",
