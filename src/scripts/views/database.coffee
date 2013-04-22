@@ -94,14 +94,19 @@ class CollectionDetails extends Backbone.View
 
   render: (err, collection) =>
     throw err if err
+    return this unless collection
+    
     el = @$el.empty()
     ul = $('<ul class="mongo-collection">')
     el.append(ul)
-    collection?.find().each (err, item) ->
+    
+    cursor = collection.find({}, { limit: 10 })
+    cursor.each (err, item) ->
       console.dir(item) if item
       if item?
         view = new Document item
         ul.append(view.render().el)
+
     this
 
 
@@ -126,10 +131,12 @@ class mb.Views.Database extends Backbone.View
     Db.connect url.mongoUrl(), @onConnect
 
   onConnect: (err, @db) =>
+    console.log err
     throw err if err
     # console.log 'success', @db
     @render()
     db.collections (err, items) =>
+      console.log err if err
       @collectionList.setCollections items
 
   collection: (collection) =>
