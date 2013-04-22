@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "/home/timo/Code/yo/chrome-mongo-browser",
+			"path": ".",
       "folder_exclude_patterns": [".sass-cache"]
 		}
 	]
