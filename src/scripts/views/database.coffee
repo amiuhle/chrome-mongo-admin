@@ -65,29 +65,7 @@ class MongoObject extends Backbone.Model
   
   isObject: -> @class() == 'object'
 
-class Document extends Backbone.View
-  tagName: 'li'
-  className: 'mongo-document mongo-object'
-  template: JST['src/templates/document.hbs']
-
-  constructor: (@document) ->
-    @collection = new Backbone.Collection
-    @collection.reset (@modelify property for property of @document)
-    super
-
-  modelify: (property) ->
-    value = @document[property]
-    new MongoObject
-      name: property
-      value: value
-
-  render: ->
-    el = @$el.empty()
-    ul = $('<ul class="mongo-properties">')
-    el.append(ul)
-    @collection.each (model) =>
-      ul.append(@template(model))
-    this
+class Document extends Backbone.VanillaJsObjects.View
 
 
 class CollectionDetails extends Backbone.View
@@ -104,7 +82,7 @@ class CollectionDetails extends Backbone.View
     cursor.each (err, item) ->
       console.dir(item) if item
       if item?
-        view = new Document item
+        view = new Document inspect: item
         ul.append(view.render().el)
 
     this

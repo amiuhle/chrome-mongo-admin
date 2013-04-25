@@ -1,7 +1,6 @@
-<li class="mongo-property {{#if isObject}}expandable{{/if}}">
-  <span class="name">{{name}}</span>
-  {{#if isObject}}
-  <span class="toggle">{{type}}</span>
-  {{/if}}
-  <span class="value mongo-{{class}}">{{value}}</span>
-</li>
+{{#if property }}
+  <span class="property">
+    {{property}}
+  </span>
+{{/if}}
+<span class="value value-{{type}}">{{value}}</span>
