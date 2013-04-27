@@ -3,7 +3,8 @@
 	[
 		{
 			"path": ".",
-      "folder_exclude_patterns": [".sass-cache"]
+      "folder_exclude_patterns": [".sass-cache"],
+      "follow_symlinks": true
 		}
 	]
 }

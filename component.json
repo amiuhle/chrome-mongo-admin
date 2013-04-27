@@ -9,5 +9,7 @@
     "handlebars": "~1.0.0",
     "indexeddb-backbonejs-adapter": "git://github.com/amiuhle/indexeddb-backbonejs-adapter.git"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "backbone-vanilla-js-objects": "~0.1.0"
+  }
 }
