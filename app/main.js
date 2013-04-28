@@ -5,8 +5,9 @@
  * @see http://developer.chrome.com/trunk/apps/app.window.html
  */
 chrome.app.runtime.onLaunched.addListener(function(intentData) {
-    chrome.app.window.create('index.html', {
-        width: 1278,
-        height: 771
-    });
+  console.log(intentData);
+  chrome.app.window.create('index.html', {
+      width: 960, //1278,
+      height: 600 //771
+  });
 });

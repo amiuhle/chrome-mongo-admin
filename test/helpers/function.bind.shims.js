@@ -1,9 +1,3 @@
-if(!chrome) {
-  var chrome = {
-
-  };
-}
-
 // Add shim for Function.prototype.bind() from:
 //    https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/bind#Compatibility
 if (!Function.prototype.bind) {

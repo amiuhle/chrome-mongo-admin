@@ -31,7 +31,7 @@ class ConnectionItem extends Backbone.View
   template: JST['src/templates/connection_list_item.hbs']
   tagName: 'li'
   events:
-    'click a': -> mb.trigger 'connect', @model
+    'click a': -> mb.sync.trigger 'mongo:connect', @model
     'click .icon-trash': 'delete'
 
   initialize: ->
@@ -53,7 +53,7 @@ class ConnectionItem extends Backbone.View
 class ConnectionList extends Backbone.View
 
   initialize: ->
-    mb.on 'connect', @connect
+    mb.sync.on 'mongo:connect', @connect
     @ready = $.Deferred()
     @collection ?= new mb.Collections.Connections
     @collection.fetch().done(@ready.resolve)
@@ -81,7 +81,7 @@ class mb.Views.Header extends Backbone.View
   template: JST['src/templates/header.hbs']
 
   initialize: ->
-    mb.on 'connect', @connect
+    mb.sync.on 'mongo:connect', @connect
     @render()
 
   render: ->
@@ -94,9 +94,8 @@ class mb.Views.Header extends Backbone.View
   submit: (e) ->
     e.preventDefault()
     url = @urlInput.val()
-    mb.trigger('connect', url) if url
+    mb.sync.trigger('mongo:connect', url) if url
     false
 
   connect: (url) =>
-    url = url.url() if url instanceof mb.Models.Connection
-    @urlInput.val(url)
+    @urlInput.val(url.toString())

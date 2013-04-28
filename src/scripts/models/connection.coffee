@@ -13,3 +13,5 @@ class mb.Models.Connection extends Backbone.Model
     super
 
   mongoUrl: -> "mongodb://#{@url()}?w=0"
+
+  toString: -> @url()

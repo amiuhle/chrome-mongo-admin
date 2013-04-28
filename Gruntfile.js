@@ -109,29 +109,6 @@ module.exports = function (grunt) {
         'test/spec/{,*/}*.js'
       ]
     },
-    jasmine: {
-      test: {
-        src: [
-          '<%= yeoman.app %>/scripts/{,*/}*.js',
-          '!<%= yeoman.app %>/scripts/vendor/*'
-        ],
-        options: {
-          vendor: [
-            'test/shims.js',
-            '<%= yeoman.app %>/scripts/vendor/*.js',
-            '<%= yeoman.app %>/components/jquery/jquery.js',
-            '<%= yeoman.app %>/components/underscore/underscore.js',
-            '<%= yeoman.app %>/components/backbone/backbone.js',
-            '<%= yeoman.app %>/components/indexeddb-backbonejs-adapter/backbone-indexeddb.js',
-            '<%= yeoman.app %>/components/handlebars/handlebars.runtime.js'
-          ],
-          specs: ['{test,.tmp}/{spec,fixtures}/{,*/}*.js']
-        }
-      },
-      chrome: {
-
-      },
-    },
     coffee: {
       dist: {
         files: [{
@@ -280,7 +257,34 @@ module.exports = function (grunt) {
           }
         }
       }
-    }
+    },
+    jasmine: {
+      test: {
+        src: [
+          '<%= yeoman.app %>/scripts/{,*/}*.js',
+          '!<%= yeoman.app %>/scripts/vendor/*',
+          '!<%= yeoman.app %>/scripts/app.js'
+        ],
+        options: {
+          vendor: [
+            'test/shims.js',
+            // '<%= yeoman.app %>/scripts/vendor/*.js',
+            '<%= yeoman.app %>/components/jquery/jquery.js',
+            '<%= yeoman.app %>/components/underscore/underscore.js',
+            '<%= yeoman.app %>/components/backbone/backbone.js',
+            '<%= yeoman.app %>/components/indexeddb-backbonejs-adapter/backbone-indexeddb.js',
+            '<%= yeoman.app %>/components/handlebars/handlebars.runtime.js'
+          ],
+          helpers: [
+            'test/helpers/*.js'
+          ],
+          specs: ['{test,.tmp}/{spec,fixtures}/{,*/}*.js']
+        }
+      },
+      chrome: {
+
+      },
+    },
   });
 
   grunt.renameTask('regarde', 'watch');
@@ -300,7 +304,7 @@ module.exports = function (grunt) {
     'app',
     'livereload-start',
     'connect:livereload',
-    'open',
+    // 'open',
     'watch'
   ]);
 
