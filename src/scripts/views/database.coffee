@@ -129,6 +129,9 @@
 
 ObjectID = require('mongodb').ObjectID
 
+ObjectID::inspect = ->
+  @toString()
+
 class mb.Models.MongoCollection extends Backbone.Model
   @mixin mb.Mixins.Accessible
   @accessor 'collectionName', 'count'
@@ -208,10 +211,7 @@ class mb.Collections.Cursor extends Backbone.VanillaJsObjects.Array
   model: mb.Models.Document
 
   parse: (@cursor) ->
-
-    _(@cursor.batchSizeValue).times =>
-      nextObject = cursor.nextObject (err, item) => @add item if item
-      console.log 'nextObject', nextObject
+    cursor.each (err, item) => @add item if item
     return []
 
 

@@ -49,7 +49,7 @@ sync = (method, model, options) ->
   if method == 'read'
     connection.then (db) ->
       db.collection collectionName, (err, collection) ->
-        collection.find {}, { batchSize: 20 }, (err, cursor) ->
+        collection.find {}, { limit: 10 }, (err, cursor) ->
           console.log err, cursor
           if err
             error(err) if error
