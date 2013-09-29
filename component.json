@@ -7,9 +7,13 @@
     "underscore": "~1.4.4",
     "backbone": "~1.0.0",
     "handlebars": "~1.0.0",
-    "indexeddb-backbonejs-adapter": "git://github.com/amiuhle/indexeddb-backbonejs-adapter.git"
+    "indexeddb-backbonejs-adapter": "git://github.com/amiuhle/indexeddb-backbonejs-adapter.git",
+    "backbone.marionette": "~1.1.0"
   },
   "devDependencies": {
     "backbone-vanilla-js-objects": "~0.1.1"
+  },
+  "resolutions": {
+    "underscore": "~1.5.1"
   }
 }
