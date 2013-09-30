@@ -1,0 +1,3 @@
+MongoAdmin.start({
+  foo: 'bar'
+});

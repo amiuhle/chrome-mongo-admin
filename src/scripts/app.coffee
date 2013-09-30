@@ -1,4 +1,8 @@
-require('process').registerBinding('tcp_wrap', require('tcp_wrap-chromeify'));
+window.MongoAdmin = app = new Backbone.Marionette.Application
+
+app.addInitializer (options) ->
+  require('process').registerBinding('tcp_wrap', require('tcp_wrap-chromeify'));
+
 
 window.mb =
   Mixins: {}
